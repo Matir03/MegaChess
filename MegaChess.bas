@@ -1,3 +1,6 @@
+$VIRTUALKEYBOARD:OFF
+$INSTALLFOLDER "MegaChess" IN "MegaChess"
+
 '$DYNAMIC
 CONST P0 = 1, PN = 2, PB = 3, PR = 4, R0 = 5, NR = 6, N0 = 7, BN = 8, B0 = 9, QN = 10, Q0 = 11, K0 = 12
 CONST LL = 15, DD = 2
@@ -20,7 +23,7 @@ BCS = -1
 BCL = -1
 
 SCREEN _NEWIMAGE(631, 631, 32)
-_FULLSCREEN _SQUAREPIXELS
+_FULLSCREEN _SQUAREPIXELS , _SMOOTH
 
 CLS , _RGB32(230, 230, 230)
 
@@ -42,6 +45,9 @@ Img&(12) = _NEWIMAGE(35, 35, 32)
 FOR i = 1 TO 12
  Img&(i + 12) = _LOADIMAGE("W" + Convert(i) + ".png")
 NEXT i
+
+_ICON Img&(24)
+_TITLE "MegaChess"
 
 DO: _LIMIT 30
  Mouse
@@ -375,9 +381,9 @@ SUB DrawBoard
 FOR i = 1 TO 14
  FOR j = 1 TO 14
   IF (i + j) MOD 2 THEN
-   DrawSquare i, j, _RGB32(180, 15, 15)
+   DrawSquare i, j, _RGB32(250, 10, 20)
   ELSE
-   DrawSquare i, j, _RGB32(15, 180, 15)
+   DrawSquare i, j, _RGB32(20, 200, 20)
   END IF
 NEXT j, i
 END SUB
@@ -1752,5 +1758,4 @@ SELECT CASE S * Piece
 END SELECT
 Value = Value * S
 END FUNCTION
-
 
